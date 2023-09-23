@@ -1,0 +1,51 @@
+import math
+while True:
+    a = float(input("nhập cạnh a(nhập 0 với cạnh cần tìm): "))
+    b = float(input("nhập cạnh b(nhập 0 với cạnh cần tìm): "))
+    c = float(input("nhập cạnh c(nhập 0 với cạnh cần tìm): "))
+    cosA = float(input("nhập góc A(nhập 0 với góc cần tìm): "))
+    cosB = float(input("nhập góc A(nhập 0 với góc cần tìm): "))
+    cosC = float(input("nhập góc A(nhập 0 với góc cần tìm): "))
+    if a == 0 :
+        if b != 0 and c != 0 and cosA != 0:
+            a = math.sqrt(c**2 + b**2 - 2 * b * c * math.cos(math.radians(cosA)))
+            cosB = math.degrees(math.acos((c**2 + a**2 - b**2) / (2 * a * c)))
+            cosC = math.degrees(math.acos((b**2 + a**2 - c**2) / (2 * a * b)))
+        else:
+            print("Vui lòng cung cấp đủ thông tin để tính cạnh a.")
+    elif b == 0:
+        if a != 0 and c != 0 and cosB != 0:
+            b = math.sqrt(c**2 + a**2 - 2 * a * c * math.cos(math.radians(cosB)))
+            cosA = math.degrees(math.acos((c**2 + b**2 - a**2) / (2 * b * c)))
+            cosC = math.degrees(math.acos((a**2 + b**2 - c**2) / (2 * b * a)))
+        else:
+            print("Vui lòng cung cấp đủ thông tin để tính cạnh b.")
+    elif c == 0:
+        if a != 0 and b != 0 and cosC != 0:
+            c = math.sqrt(a**2 + b**2 - 2 * a * b * math.cos(math.radians(cosC)))
+            cosA = math.degrees(math.acos((b**2 + c**2 - a**2) / (2 * c * b)))
+            cosB = math.degrees(math.acos((a**2 + c**2 - b**2) / (2 * c * a)))
+        else:
+            print("Vui lòng cung cấp đủ thông tin để tính cạnh c.")
+    else:
+        if cosA == 0:
+            cosA = math.degrees(math.acos((b**2 + c**2 - a**2) / (2 * b * c)))
+        if cosB == 0:
+            cosB = math.degrees(math.acos((a**2 + c**2 - b**2) / (2 * a * c)))
+        if cosC == 0:
+            cosC = math.degrees(math.acos((a**2 + b**2 - c**2) / (2 * a * b)))
+    print("Cạnh a: ",round(a,2))
+    print("Cạnh a: ",round(b,2))
+    print("Cạnh C: ",round(c,2))
+    print("Góc A: ",round(cosA,2))
+    print("Góc B: ",round(cosB,2))
+    print("Góc C: ",round(cosC,2))
+    while True:
+        tiep_tuc = input("Bạn có muốn tiếp tục không? (có/a, không/b): ").lower()
+        if tiep_tuc in ["a"]:
+            break
+        elif tiep_tuc in ["b"]:
+            print("OK, tạm biệt!")
+            exit()
+        else:
+            print("Lựa chọn không hợp lệ. Vui lòng nhập 'a' hoặc 'không'b")
